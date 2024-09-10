@@ -16,40 +16,40 @@ using namespace std;
 // #define int long long
 // #define double long double
 
-// const int mod = 1e9 + 7;
+const int mod = 1e9 + 7;
 // const int mod = 998244353;
 
 void solve() {
+
     int n, m; cin >> n >> m;
+    vector<vector<int>> dp(n + 1, vector<int>(m + 1, 0));
 
-    vector<vector<int>> gr(n + 1);
-
-    for (int i = 0; i < m; i++) {
-        int x, y; cin >> x >> y;
-        gr[x].push_back(y);
-    }
-
-    vector<int> dp(n + 1, -1);
-    auto dfs = [&](auto self, int u)->int {
-
-        if (dp[u] != -1) {
-            return dp[u];
-        }
-
-        int res = 0;
-        for (auto &v : gr[u]) {
-            res = max(res, self(self, v) + 1);
-        }
-
-        return dp[u] = res;
-        };
-
-    int res = 0;
     for (int i = 1; i <= n; i++) {
-        res = max(res, dfs(dfs, i));
+        for (int j = 1; j <= m; j++) {
+            char ch; cin >> ch;
+            dp[i][j] = (ch == '.') ? 0 : -1;
+        }
     }
 
-    cout << res << "\n";
+    dp[0][1] = 1;
+
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= m; j++) {
+            if (dp[i][j] != -1) {
+                if (dp[i - 1][j] != -1) {
+                    dp[i][j] += dp[i - 1][j];
+                }
+                if (dp[i][j - 1] != -1) {
+                    dp[i][j] += dp[i][j - 1];
+                }
+
+                dp[i][j] %= mod;
+            }
+
+        }
+    }
+
+    cout << dp[n][m];
 
 }
 

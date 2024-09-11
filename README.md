@@ -7,4 +7,5 @@
 5. [Knpsack 2](https://atcoder.jp/contests/dp/tasks/dp_e)
 6. [LCS](https://atcoder.jp/contests/dp/tasks/dp_f)
 7. [Longest Path](https://atcoder.jp/contests/dp/tasks/dp_g)
-8. [Coins](https://atcoder.jp/contests/dp/tasks/dp_i)
+8. [Grid 1](https://atcoder.jp/contests/dp/tasks/dp_h)
+9. [Coins](https://atcoder.jp/contests/dp/tasks/dp_i)
